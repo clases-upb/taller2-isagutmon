@@ -21,7 +21,7 @@ public class App {
 
     public static void main(String[] args) {
         try {
-            System.out.println(Calcular_para_ganar(3, 3, 3, 3, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f));
+            
         } 
         
         catch (Exception e) {
