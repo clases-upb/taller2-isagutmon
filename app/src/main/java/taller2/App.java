@@ -163,13 +163,14 @@ public class App {
             // Representando las notas (entre 0 y 5) y cinco floats representando los porcentajes (que entre todos deberán sumar 1 y cada uno estar entre 0 y 1) 
             if //Añadimos las condiciones de que todos los porcentajes deben sumar 1
                 ((porcentaje_1 + porcentaje_2 + porcentaje_3 + porcentaje_4 + porcentaje_5 == suma_de_porcentajes) && 
-                //Todos los porcentajes deben estar entre 0-1
+                /*Todos los porcentajes deben estar entre 0-1 (no tome el 0 y el 5 porque dice "entre" y supuse que no se puede tener
+                nota sin porcentaje o con el porcentaje de 100%*/
                 (lim_inf_porcentaje < porcentaje_1 && porcentaje_1 < lim_sup_porcentaje && 
                  lim_inf_porcentaje < porcentaje_2 && porcentaje_2 < lim_sup_porcentaje && 
                  lim_inf_porcentaje < porcentaje_3 && porcentaje_3 < lim_sup_porcentaje && 
                  lim_inf_porcentaje < porcentaje_4 && porcentaje_4 < lim_sup_porcentaje && 
                  lim_inf_porcentaje < porcentaje_5 && porcentaje_5 < lim_sup_porcentaje) && 
-                 //Todas las notas deben estar entre 0-5
+                 //Todas las notas deben estar entre 0-5 (aunque dice "entre" tomé el 0 y el 5 como notas válidas por lógica)
                 (lim_inf_notas <= nota_1 && nota_1 <= lim_sup_notas && 
                  lim_inf_notas <= nota_2 && nota_2 <= lim_sup_notas && 
                  lim_inf_notas <= nota_3 && nota_3 <= lim_sup_notas && 
@@ -200,6 +201,7 @@ public class App {
         try { 
             // Declaramos las variables y constantes 
             final int nota_min = 3, lim_inf_porcentaje = 0, lim_sup_porcentaje = 1; 
+            final int lim_sup_notas = 5, lim_inf_notas = 0
             final float suma_de_porcentajes = 1; 
             float nota_faltante = 0; 
 
@@ -210,7 +212,13 @@ public class App {
                  lim_inf_porcentaje < porcentaje_2 && porcentaje_2 < lim_sup_porcentaje && 
                  lim_inf_porcentaje < porcentaje_3 && porcentaje_3 < lim_sup_porcentaje && 
                  lim_inf_porcentaje < porcentaje_4 && porcentaje_4 < lim_sup_porcentaje && 
-                 lim_inf_porcentaje < porcentaje_5 && porcentaje_5 < lim_sup_porcentaje)) { 
+                 lim_inf_porcentaje < porcentaje_5 && porcentaje_5 < lim_sup_porcentaje))
+                //Todas las notas deben estar entre 0-5 (aunque dice "entre" tomé el 0 y el 5 como notas válidas por lógica)
+                (lim_inf_notas <= nota_1 && nota_1 <= lim_sup_notas && 
+                 lim_inf_notas <= nota_2 && nota_2 <= lim_sup_notas && 
+                 lim_inf_notas <= nota_3 && nota_3 <= lim_sup_notas && 
+                 lim_inf_notas <= nota_4 && nota_4 <= lim_sup_notas && 
+                 lim_inf_notas <= nota_5 && nota_5 <= lim_sup_notas)) { 
                 //Calculamos y retornamos la nota necesaria para tener un 3
                 nota_faltante = (nota_min - ((nota_1 * porcentaje_1) + (nota_2 * porcentaje_2) + (nota_3 * porcentaje_3) + (nota_4 * porcentaje_4)))/ porcentaje_5; 
                 return nota_faltante; 
